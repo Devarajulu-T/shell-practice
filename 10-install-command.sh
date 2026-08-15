@@ -5,13 +5,15 @@ USERID=$(id -u)
 if [ $USERID -ne 0 ]
 then
     echo "ERROR:: Please run this script with root access"
-    exit 127    
+    exit 127    #give other than 0 upto 127
 else
     echo "You are running with root access"
 fi
 
 dnf list installed mysql
 
+# check already installed or not. if installed $? is 0, then
+# if not installed $? is not 0. expression is true
 if [ $? -ne 0 ]
 then
     echo "MYSQL is not installed... going to install it"
